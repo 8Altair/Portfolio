@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Modeling Artist Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles for the overlay */
+        .overlay {
+            display: none; /* Hide by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .overlay button {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .overlay button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+
+    <!-- Dark overlay that appears when an image is enlarged -->
+    <div id="overlay" class="overlay" onclick="hideFullscreenImage()"></div>
+
+    <!-- Header with Burger Menu -->
+    <header class="container-fluid py-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <input type="checkbox" id="menu-toggle" class="d-none">
+            <label for="menu-toggle" class="burger-menu text-light fs-3 cursor-pointer">&#9776;</label>
+            <nav class="menu">
+                <ul class="list-unstyled m-0 p-0 text-center">
+                    <li><a href="#headline" class="text-light" onclick="document.getElementById('menu-toggle').checked = false;">Home</a></li>
+                    <li><a href="#about" class="text-light" onclick="document.getElementById('menu-toggle').checked = false;">About</a></li>
+                    <li><a href="#portfolio" class="text-light" onclick="document.getElementById('menu-toggle').checked = false;">Portfolio</a></li>
+                    <li><a href="#footer" class="text-light" onclick="document.getElementById('menu-toggle').checked = false;">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Headline Section -->
+    <section id="headline" class="container text-center my-5">
+        <h1 class="display-4 text-teal">Dušan's Portfolio</h1>
+        <p class="lead">Creating immersive 3D visual experiences</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container my-5">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <img src="artist-profile.jpg" alt="Artist Profile" class="img-fluid rounded-circle">
+            </div>
+            <div class="col-md-8 text-justify">
+                <p>Welcome to my portfolio! I am a passionate 3D modeling artist with experience in creating realistic and captivating 3D models for various industries. My work combines artistic creativity with technical precision to bring virtual concepts to life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="container my-5 text-center">
+        <h2 class="text-teal mb-4">Portfolio</h2>
+
+        <div class="portfolio-item mb-5" data-project="project1">
+            <h3 class="text-light">3D Model - Project Title 1</h3>
+            <img src="model1.jpg" class="portfolio-img rounded mb-2" alt="3D Model 1" onclick="showFullscreenImage('project1', 0)">
+            <p class="text-light">3D Model - Project Description 1</p>
+        </div>
+
+        <div class="portfolio-item mb-5" data-project="project2">
+            <h3 class="text-light">3D Model - Project Title 2</h3>
+            <img src="model2.jpg" class="portfolio-img rounded mb-2" alt="3D Model 2" onclick="showFullscreenImage('project2', 0)">
+            <p class="text-light">3D Model - Project Description 2</p>
+        </div>
+
+        <div class="portfolio-item mb-5" data-project="project3">
+            <h3 class="text-light">3D Model - Project Title 3</h3>
+            <img src="model3.jpg" class="portfolio-img rounded mb-2" alt="3D Model 3" onclick="showFullscreenImage('project3', 0)">
+            <p class="text-light">3D Model - Project Description 3</p>
+        </div>
+    </section>
+
+    <!-- Video Project Section -->
+    <section id="video-project" class="container my-5 text-center">
+        <h2 class="text-teal mb-4">Video Project</h2>
+
+        <!-- Local Video -->
+        <div class="video-item mb-5">
+            <h3 class="text-light">Local Video</h3>
+            <video controls width="600">
+                <source src="cc033a6e-a34b-45d4-8481-71491182_3400.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="text-light mt-2">Description of the local video project.</p>
+        </div>
+
+        <!-- Local GIF -->
+        <div class="video-item mb-5">
+            <h3 class="text-light">Local GIF</h3>
+            <img src="replay-Taxi-v3.gif" alt="Local GIF Project" width="550" class="rounded mb-2">
+            <p class="text-light mt-2">Description of the local GIF project.</p>
+        </div>
+
+        <!-- Embedded YouTube Video -->
+        <div class="video-item mb-5">
+            <h3 class="text-light">Embedded YouTube Video</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/94bGzWyHbu0?si=HHgm2yiLZSrclnvY"
+                    title="YouTube video player" frameborder="0" allow="accelerometer;
+                    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
+                    web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p class="text-light mt-2">Description of the embedded YouTube video project.</p>
+        </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer id="footer" class="container-fluid py-3">
+        <div class="d-flex justify-content-between">
+            <small class="text-light">&copy; 2024 Dušan 3D Modelling. All rights reserved.</small>
+            <a href="https://www.instagram.com/yourprofile" target="_blank" class="text-light">
+                <i class="fab fa-instagram fs-4"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const projectImages = {
+            project1: [
+                "model1.jpg",
+                "model1a.jpg",
+                "model1b.jpg"
+            ],
+            project2: [
+                "model2.jpg",
+                "model2a.jpg",
+                "model2b.jpg"
+            ],
+            project3: [
+                "model3.jpg",
+                "model3a.jpg",
+                "model3b.jpg"
+            ]
+        };
+
+        let currentProject = '';
+    let currentIndex = 0;
+
+    function showFullscreenImage(project, index) {
+        currentProject = project;
+        currentIndex = index; // Set the index to the clicked image
+        updateFullscreenImage();
+    }
+
+    function updateFullscreenImage() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'flex'; // Display the overlay using flex for centering
+
+    // Clear any existing content in the overlay
+    overlay.innerHTML = '';
+
+    // Create a main container for the entire overlay content
+    const mainContainer = document.createElement('div');
+    mainContainer.classList.add('main-container');
+    overlay.appendChild(mainContainer);
+
+    // Create a container for the fullscreen image
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+    mainContainer.appendChild(imageContainer);
+
+    // Create a copy of the image for the fullscreen effect
+    const fullscreenImage = document.createElement('img');
+    fullscreenImage.src = projectImages[currentProject][currentIndex];
+    fullscreenImage.classList.add('fullscreen');
+    imageContainer.appendChild(fullscreenImage);
+
+    // Create a container for the buttons
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    mainContainer.appendChild(buttonContainer);
+
+    // Create navigation buttons only if there are multiple images
+    if (projectImages[currentProject].length > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.innerText = 'Previous';
+        prevButton.onclick = (e) => {
+            e.stopPropagation(); // Prevent the overlay from closing when clicking the button
+            navigateImages(-1);
+        };
+        buttonContainer.appendChild(prevButton);
+
+        const nextButton = document.createElement('button');
+        nextButton.innerText = 'Next';
+        nextButton.onclick = (e) => {
+            e.stopPropagation(); // Prevent the overlay from closing when clicking the button
+            navigateImages(1);
+        };
+        buttonContainer.appendChild(nextButton);
+    }
+
+    // Add event listeners for zooming
+    /*fullscreenImage.addEventListener('mouseenter', enableZoom);
+    fullscreenImage.addEventListener('mouseleave', disableZoom);*/
+    fullscreenImage.addEventListener('wheel', handleWheelEvent);
+
+    /*function enableZoom() {
+        fullscreenImage.style.cursor = 'zoom-in';
+    }
+
+    function disableZoom() {
+        fullscreenImage.style.cursor = '';
+    }*/
+
+    let currentScale = 1;
+    const minScale = 1;
+    const maxScale = 5;
+
+    function handleWheelEvent(e) {
+        e.preventDefault();
+
+        // Get the mouse position relative to the image
+        const rect = fullscreenImage.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left; // X coordinate relative to image
+        const mouseY = e.clientY - rect.top;  // Y coordinate relative to image
+
+        // Calculate the zoom factor based on the scroll direction
+        const delta = -Math.sign(e.deltaY);
+        const zoomFactor = 0.1 * delta;
+
+        // Update the current scale
+        currentScale = Math.max(minScale, Math.min(maxScale, currentScale + zoomFactor));
+
+        // Set the transform-origin to the mouse position for zooming
+        fullscreenImage.style.transformOrigin = `${(mouseX / rect.width) * 100}% ${(mouseY / rect.height) * 100}%`;
+
+        // Apply the scale transformation
+        applyTransform(currentScale);
+    }
+
+    function applyTransform(scale) {
+        fullscreenImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    }
+}
+
+    function navigateImages(direction) {
+        currentIndex += direction;
+        const totalImages = projectImages[currentProject].length;
+
+        // Loop back to the start/end if needed
+        if (currentIndex < 0) {
+            currentIndex = totalImages - 1; // Go to the last image
+        } else if (currentIndex >= totalImages) {
+            currentIndex = 0; // Go back to the first image
+        }
+        updateFullscreenImage(); // Update the displayed image
+    }
+
+    function hideFullscreenImage() {
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'none'; // Hide the overlay
+        overlay.innerHTML = ''; // Clear the content from the overlay
+    }
+    </script>
+</body>
+</html>
